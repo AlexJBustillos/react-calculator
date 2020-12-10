@@ -59,11 +59,7 @@ class Calculator extends Component {
                         <option>-</option>   
                         <option>/</option>   
                         <option>*</option>   
-                    </select>
-                    <option>+</option>   
-                    <option>-</option>   
-                    <option>/</option>   
-                    <option>*</option>   
+                    </select>  
                     <input type="number"
                     name="num2"
                     placeholder="Enter your second number"
