@@ -8,23 +8,44 @@ class Calculator extends Component {
             num1: '',
             num2: '',
             answer: '',
+            operator: '+'
 
         }
     }
     setNum = (e, num) => {
-        this.setState({ [num]: e.target.value});
+        this.setState({ [num]: parseInt(e.target.value)});
+    }
+
+    operator = (e) => {
+        let type = e.target.value;
+        this.setState({operator: type })
     }
 
     addNum = () => {
-        let addValue = parseInt(this.state.num1) + parseInt(this.state.num2)
+        let num1 = this.state.num1;
+        let num2 = this.state.num2;
 
-        this.setState({answer: addValue})
+        if (this.state.operator === '+') {
+            let addValue = num1 + num2
+            this.setState({answer: addValue })
+        } else if (this.state.operator === '-') {
+            let addValue = num1 - num2
+            this.setState({answer: addValue })
+        } else if (this.state.operator === '/') {
+            let addValue = num1 / num2
+            this.setState({answer: addValue })
+        } else if (this.state.operator === '*') {
+            let addValue = num1 * num2
+            this.setState({answer: addValue })
+        } 
+
+        
     }
     
     render() {
         return (
             <div>
-                <h1>Add with React!</h1>
+                <h1>React Calculator!</h1>
 
                 <div className="add">
                     <input type="number"
@@ -33,7 +54,16 @@ class Calculator extends Component {
                     value={this.state.num1}
                     onChange={ (e) => this.setNum(e, 'num1')}
                     />
-                    <span>+</span>
+                    <select onChange={this.operator}>
+                        <option>+</option>   
+                        <option>-</option>   
+                        <option>/</option>   
+                        <option>*</option>   
+                    </select>
+                    <option>+</option>   
+                    <option>-</option>   
+                    <option>/</option>   
+                    <option>*</option>   
                     <input type="number"
                     name="num2"
                     placeholder="Enter your second number"
@@ -41,8 +71,7 @@ class Calculator extends Component {
                     onChange={ (e) => this.setNum(e, 'num2')}
                     />
                     <button onClick={this.addNum}>=</button>
-                    <h3>Addition results go here!</h3>
-                    <h3> {this.state.answer}</h3>
+                    <h3>Results: {this.state.answer}</h3>
                 </div>
             </div>
 
